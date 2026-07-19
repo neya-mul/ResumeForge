@@ -17,7 +17,7 @@ export const Navbar: React.FC = () => {
   // Explicitly derive boolean flags from live auth state
   const isLoggedIn = !!session;
   const user = session?.user;
-  console.log(user)
+  // console.log(user)
 
   // Close the mobile drawer automatically whenever the route changes
   useEffect(() => {
@@ -27,13 +27,13 @@ export const Navbar: React.FC = () => {
   // 2. Exact routes matching your specifications
   const loggedOutRoutes = [
     { name: 'Home', path: '/' },
-    { name: 'Browse Resumes', path: '/resumes' },
+    { name: 'Browse Resumes', path: '/brouse-resumes' },
     { name: 'About', path: '/about' },
   ];
 
   const loggedInRoutes = [
     { name: 'Home', path: '/' },
-    { name: 'Browse Resumes', path: '/resumes' },
+    { name: 'Browse Resumes', path: '/brouse-resumes' },
     { name: 'Add Resume', path: '/add-resume' },
     { name: 'My Resumes', path: '/resumes/my' },
     { name: 'About', path: '/about' },
