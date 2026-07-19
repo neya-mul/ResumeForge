@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ResumeForge — Build Resumes That Get You Noticed",
   description: "Create stunning resumes in minutes with AI-powered suggestions and professional templates designed to get you hired.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
