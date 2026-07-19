@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
   const loggedInRoutes = [
     { name: 'Home', path: '/' },
     { name: 'Browse Resumes', path: '/resumes' },
-    { name: 'Add Resume', path: '/resumes/add' },
+    { name: 'Add Resume', path: '/add-resume' },
     { name: 'My Resumes', path: '/resumes/my' },
     { name: 'About', path: '/about' },
   ];
