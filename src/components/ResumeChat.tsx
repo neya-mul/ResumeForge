@@ -34,10 +34,7 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: trimmed,
-            history: newMessages,
-          }),
+          body: JSON.stringify({ message: trimmed, history: newMessages }),
         }
       );
       const data = await res.json();
@@ -59,11 +56,24 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
   };
 
   return (
-    <div className="border rounded-lg flex flex-col h-96">
-      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+    <div
+      className="rounded-lg flex flex-col h-96 border border-white/10 border-t-2"
+      style={{ background: "#0F172A", borderTopColor: "#34D399", borderTopStyle: "dashed" }}
+    >
+      <div className="px-6 pt-6 pb-3 flex items-center gap-2">
+        <span
+          className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"
+          style={{ animation: loading ? "rf-pulse 1s ease-in-out infinite" : "none" }}
+        />
+        <p className="text-xs tracking-[0.15em] uppercase text-emerald-400 font-mono">
+          Ask About This Candidate
+        </p>
+      </div>
+
+      <div className="flex-1 overflow-y-auto px-6 py-2 space-y-3">
         {messages.length === 0 && (
-          <p className="text-sm text-gray-400 text-center mt-8">
-            Ask anything about this resume — experience, skills, fit for a role, etc.
+          <p className="text-sm text-center mt-10 text-slate-500">
+            Ask about experience, skills, or fit for a role.
           </p>
         )}
 
@@ -71,12 +81,13 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
           <div
             key={i}
             className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+            style={{ animation: "rf-message-in 0.3s ease both" }}
           >
             <div
-              className={`max-w-[80%] rounded-lg px-3 py-2 text-sm ${
+              className={`max-w-[80%] rounded-md px-4 py-2 text-sm leading-relaxed ${
                 m.role === "user"
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-100 text-gray-800"
+                  ? "bg-white text-[#0A0F1C]"
+                  : "bg-emerald-400/10 text-slate-200 border border-emerald-400/15"
               }`}
             >
               {m.content}
@@ -86,31 +97,29 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
 
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-gray-100 text-gray-500 rounded-lg px-3 py-2 text-sm">
-              Thinking...
-            </div>
+            <div className="px-4 py-2 text-sm text-slate-500 font-mono">thinking…</div>
           </div>
         )}
 
         <div ref={bottomRef} />
       </div>
 
-      {error && <p className="text-red-600 text-xs px-4">{error}</p>}
+      {error && <p className="text-xs px-6 text-red-400">{error}</p>}
 
-      <div className="border-t p-3 flex gap-2">
+      <div className="px-6 py-4 flex gap-2 border-t border-white/10">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Ask a question..."
+          placeholder="Type a question…"
           disabled={loading}
-          className="flex-1 border rounded-full px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
+          className="flex-1 px-4 py-2 text-sm rounded-md outline-none bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:border-emerald-400 transition-colors disabled:opacity-50"
         />
         <button
           onClick={sendMessage}
           disabled={loading || !input.trim()}
-          className="px-4 py-2 rounded-full bg-indigo-600 text-white text-sm font-medium disabled:opacity-50 hover:bg-indigo-700 transition"
+          className="px-4 py-2 text-sm font-medium rounded-md transition-colors disabled:opacity-50 bg-white text-[#0A0F1C] hover:bg-emerald-400"
         >
           Send
         </button>
