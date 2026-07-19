@@ -27,7 +27,7 @@ export const CTASection = () => {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 relative">
               <Link
-                href="/register"
+                href="/add-resume"
                 className="rounded-full bg-white px-6 py-3 text-sm font-bold text-indigo-600 shadow-md hover:bg-indigo-50 transition-all duration-200 hover:scale-[1.02]"
               >
                 Get Started Free →
