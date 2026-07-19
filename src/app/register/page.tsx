@@ -36,18 +36,18 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-[#F8F7FF]">
+        <div className="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-[#F8F7FF] dark:bg-zinc-950">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3 }}
-                className="w-full max-w-md space-y-8 p-8 rounded-2xl bg-white border border-gray-100 shadow-xl shadow-indigo-100/40"
+                className="w-full max-w-md space-y-8 p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 shadow-xl shadow-indigo-100/40 dark:shadow-zinc-900/80"
             >
                 <div>
-                    <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                    <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-zinc-100" style={{ fontFamily: "'Outfit', sans-serif" }}>
                         Create your account
                     </h2>
-                    <p className="mt-2 text-center text-sm text-gray-500">
+                    <p className="mt-2 text-center text-sm text-gray-500 dark:text-zinc-400">
                         Or{' '}
                         <Link href="/login" className="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
                             sign in to your existing dashboard
@@ -58,7 +58,7 @@ export default function RegisterPage() {
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-4 rounded-md">
                         <div>
-                            <label htmlFor="name" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+                            <label htmlFor="name" className="block text-xs font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">
                                 Full Name
                             </label>
                             <input
@@ -68,13 +68,13 @@ export default function RegisterPage() {
                                 required
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:bg-white text-sm transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-sm transition-all"
                                 placeholder="Alex Mercer"
                             />
                         </div>
 
                         <div>
-                            <label htmlFor="email" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+                            <label htmlFor="email" className="block text-xs font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">
                                 Email address
                             </label>
                             <input
@@ -84,13 +84,13 @@ export default function RegisterPage() {
                                 required
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:bg-white text-sm transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-sm transition-all"
                                 placeholder="alex@example.com"
                             />
                         </div>
 
                         <div>
-                            <label htmlFor="password" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+                            <label htmlFor="password" className="block text-xs font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">
                                 Password
                             </label>
                             <input
@@ -100,7 +100,7 @@ export default function RegisterPage() {
                                 required
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:bg-white text-sm transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-sm transition-all"
                                 placeholder="••••••••"
                             />
                         </div>

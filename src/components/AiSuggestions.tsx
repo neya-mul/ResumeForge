@@ -36,7 +36,7 @@ export default function AiSuggestions({ resumeId }: { resumeId: string }) {
 
   return (
     <div
-      className="rounded-2xl px-6 py-6 border border-gray-200/80 shadow-sm border-t-4 bg-white"
+      className="rounded-2xl px-6 py-6 border border-gray-200/80 dark:border-zinc-800 shadow-sm border-t-4 bg-white dark:bg-zinc-900"
       style={{ borderTopColor: "#4F46E5" }}
     >
       <div className="flex items-center gap-2 mb-4">
@@ -64,7 +64,7 @@ export default function AiSuggestions({ resumeId }: { resumeId: string }) {
           {suggestions.map((s, i) => (
             <li
               key={i}
-              className="flex gap-3 px-4 py-3 rounded-xl text-sm text-gray-700 bg-indigo-50/50 border border-indigo-100/50"
+              className="flex gap-3 px-4 py-3 rounded-xl text-sm text-gray-700 dark:text-zinc-300 bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100/50 dark:border-indigo-900/50"
               style={{ animation: "rf-message-in 0.35s ease both", animationDelay: `${i * 60}ms` }}
             >
               <span className="shrink-0 text-indigo-600 font-mono font-bold">

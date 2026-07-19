@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="w-full bg-white border-t border-gray-100 text-gray-500">
+    <footer className="w-full bg-white dark:bg-zinc-900 border-t border-gray-100 dark:border-zinc-800 text-gray-500 dark:text-zinc-400">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           
@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
               <div className="h-7 w-7 rounded-md bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center font-bold text-white text-sm shadow-sm">
                 R
               </div>
-              <span className="text-lg font-bold tracking-tight text-gray-900">
+              <span className="text-lg font-bold tracking-tight text-gray-900 dark:text-zinc-100">
                 Resume<span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Forge</span>
               </span>
             </Link>
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
 
           {/* Platform Links */}
           <div>
-            <h4 className="text-sm font-semibold text-gray-800 uppercase tracking-wider mb-4">Resources</h4>
+            <h4 className="text-sm font-semibold text-gray-800 dark:text-zinc-200 uppercase tracking-wider mb-4">Resources</h4>
             <ul className="space-y-2.5">
               {resourceLinks.map((link) => (
                 <li key={link.path}>
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
 
           {/* Contact & Company Info */}
           <div>
-            <h4 className="text-sm font-semibold text-gray-800 uppercase tracking-wider mb-4">Company</h4>
+            <h4 className="text-sm font-semibold text-gray-800 dark:text-zinc-200 uppercase tracking-wider mb-4">Company</h4>
             <ul className="space-y-2.5 mb-4">
               {companyLinks.map((link) => (
                 <li key={link.path}>
@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <div className="pt-2 border-t border-gray-100 text-xs space-y-1 text-gray-400">
+            <div className="pt-2 border-t border-gray-100 dark:border-zinc-800 text-xs space-y-1 text-gray-400 dark:text-zinc-500">
               <p>Email: support@resumeforge.ai</p>
             </div>
           </div>
@@ -72,7 +72,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <div className="mt-12 pt-6 border-t border-gray-100 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400 dark:text-zinc-500">
           <p>&copy; {currentYear} ResumeForge. All rights reserved.</p>
           <div className="flex space-x-6">
             <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-indigo-600 transition-colors">GitHub</a>

@@ -72,7 +72,7 @@ export default function ResumeFilters({ totalPages, currentPage }: ResumeFilters
             placeholder="Search by name, title, summary..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-sm"
+            className="w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-gray-900 dark:text-zinc-100 placeholder:text-gray-400 dark:placeholder:text-zinc-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-sm"
           />
         </div>
         <div className="relative">
@@ -81,7 +81,7 @@ export default function ResumeFilters({ totalPages, currentPage }: ResumeFilters
             placeholder="Filter by location..."
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-sm"
+            className="w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-gray-900 dark:text-zinc-100 placeholder:text-gray-400 dark:placeholder:text-zinc-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-sm"
           />
         </div>
         <div className="relative">
@@ -90,7 +90,7 @@ export default function ResumeFilters({ totalPages, currentPage }: ResumeFilters
             placeholder="Filter by skill..."
             value={skill}
             onChange={(e) => setSkill(e.target.value)}
-            className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-sm"
+            className="w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-gray-900 dark:text-zinc-100 placeholder:text-gray-400 dark:placeholder:text-zinc-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-sm"
           />
         </div>
       </div>
@@ -104,7 +104,7 @@ export default function ResumeFilters({ totalPages, currentPage }: ResumeFilters
               className={`cursor-pointer px-3.5 py-1.5 rounded-lg border text-xs font-bold transition-all ${
                 num === currentPage
                   ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                  : 'border-gray-200 bg-white text-gray-600 hover:border-indigo-500 hover:text-indigo-600'
+                  : 'border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-gray-600 dark:text-zinc-300 hover:border-indigo-500 hover:text-indigo-600'
               }`}
             >
               {num}

@@ -30,7 +30,7 @@ export const StepsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white dark:bg-zinc-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -40,10 +40,10 @@ export const StepsSection = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs font-semibold text-indigo-700 mb-4">
+          <span className="inline-flex items-center rounded-full border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/50 px-4 py-1.5 text-xs font-semibold text-indigo-700 dark:text-indigo-400 mb-4">
             How It Works
           </span>
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl" style={{ fontFamily: "'Outfit', sans-serif" }}>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-zinc-100 sm:text-4xl" style={{ fontFamily: "'Outfit', sans-serif" }}>
             Four Simple <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Steps</span> to Your Dream Resume
           </h2>
         </motion.div>
@@ -62,8 +62,8 @@ export const StepsSection = () => {
               <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white font-bold text-sm mb-4 shadow-lg shadow-indigo-500/20">
                 {item.step}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-zinc-100 mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed">{item.desc}</p>
               
               {/* Connector Arrow */}
               {i < 3 && (

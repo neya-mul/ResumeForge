@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { authClient } from '@/lib/auth-client';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +67,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${scrolled ? 'bg-white/90 border-gray-200 shadow-sm' : 'bg-white/70 border-transparent'} backdrop-blur-xl`}>
+    <nav className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-zinc-900/90 border-gray-200 dark:border-zinc-800 shadow-sm' : 'bg-white/70 dark:bg-zinc-900/70 border-transparent'} backdrop-blur-xl`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
@@ -75,7 +76,7 @@ export const Navbar: React.FC = () => {
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center font-bold text-white shadow-md shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-shadow">
               R
             </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900">
+            <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-zinc-100">
               Resume<span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Forge</span>
             </span>
           </Link>
@@ -88,12 +89,12 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={route.path}
                   href={route.path}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg ${isActive ? 'text-indigo-700' : 'text-gray-500 hover:text-gray-900'}`}
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg ${isActive ? 'text-indigo-700 dark:text-indigo-400' : 'text-gray-500 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-zinc-100'}`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="bubble"
-                      className="absolute inset-0 z-0 bg-indigo-50 rounded-lg"
+                      className="absolute inset-0 z-0 bg-indigo-50 dark:bg-indigo-950/50 rounded-lg"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -103,15 +104,16 @@ export const Navbar: React.FC = () => {
             })}
 
             {/* Dynamic Auth Status Area */}
-            <div className="ml-4 flex items-center space-x-4 border-l border-gray-200 pl-4 min-w-[140px] justify-end">
+            <div className="ml-4 flex items-center space-x-4 border-l border-gray-200 dark:border-zinc-700 pl-4 min-w-[140px] justify-end">
+              <ThemeToggle />
               {isPending ? (
                 // Clean loading skeleton to match typography metrics
-                <div className="h-8 w-8 animate-pulse rounded-full bg-indigo-100" />
+                <div className="h-8 w-8 animate-pulse rounded-full bg-indigo-100 dark:bg-zinc-700" />
               ) : isLoggedIn && user ? (
                 <div className="flex items-center space-x-3">
                   {/* User profile info */}
                   <div className="flex flex-col items-end text-right">
-                    <span className="text-xs font-semibold text-gray-800 line-clamp-1 max-w-[125px]">
+                    <span className="text-xs font-semibold text-gray-800 dark:text-zinc-200 line-clamp-1 max-w-[125px]">
                       {user.name}
                     </span>
                     <span className="text-[10px] font-medium text-indigo-600 uppercase tracking-wider">
@@ -124,7 +126,7 @@ export const Navbar: React.FC = () => {
                     <img
                       src={user.image}
                       alt={user.name}
-                      className="h-8 w-8 rounded-full border-2 border-indigo-100 object-cover"
+                      className="h-8 w-8 rounded-full border-2 border-indigo-100 dark:border-indigo-900 object-cover"
                     />
                   ) : (
                     <div className="h-8 w-8 rounded-full border-2 border-indigo-100 bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center font-bold text-xs text-white select-none">
@@ -134,7 +136,7 @@ export const Navbar: React.FC = () => {
 
                   <button
                     onClick={handleLogout}
-                    className="rounded-lg bg-gray-50 border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors"
+                    className="rounded-lg bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-zinc-400 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:text-gray-800 dark:hover:text-zinc-200 transition-colors"
                   >
                     Logout
                   </button>
@@ -143,7 +145,7 @@ export const Navbar: React.FC = () => {
                 <>
                   <Link
                     href="/login"
-                    className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+                    className="text-sm font-medium text-gray-500 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-zinc-100 transition-colors"
                   >
                     Log In
                   </Link>
@@ -180,7 +182,7 @@ export const Navbar: React.FC = () => {
               type="button"
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
-              className="inline-flex items-center justify-center rounded-lg p-2 text-gray-500 hover:bg-indigo-50 hover:text-indigo-700 focus:outline-none transition-colors"
+              className="inline-flex items-center justify-center rounded-lg p-2 text-gray-500 dark:text-zinc-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-700 dark:hover:text-indigo-400 focus:outline-none transition-colors"
             >
               <span className="sr-only">Open main menu</span>
               <svg
@@ -211,10 +213,10 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-2 overflow-hidden"
+            className="md:hidden border-t border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-4 py-4 space-y-2 overflow-hidden"
           >
             {isLoggedIn && user && (
-              <div className="flex items-center space-x-3 px-3 py-2 bg-indigo-50/60 rounded-lg mb-2 border border-indigo-100">
+              <div className="flex items-center space-x-3 px-3 py-2 bg-indigo-50/60 dark:bg-indigo-950/30 rounded-lg mb-2 border border-indigo-100 dark:border-indigo-900/50">
                 {user.image ? (
                   <img src={user.image} alt={user.name} className="h-9 w-9 rounded-full object-cover" />
                 ) : (
@@ -223,8 +225,8 @@ export const Navbar: React.FC = () => {
                   </div>
                 )}
                 <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-gray-800">{user.name}</span>
-                  <span className="text-xs text-gray-500">{user.email}</span>
+                  <span className="text-sm font-semibold text-gray-800 dark:text-zinc-200">{user.name}</span>
+                  <span className="text-xs text-gray-500 dark:text-zinc-400">{user.email}</span>
                 </div>
               </div>
             )}
@@ -238,8 +240,8 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsOpen(false)}
                   className={`block rounded-lg px-3 py-2 text-base font-medium transition-colors ${
                     isActive
-                      ? 'bg-indigo-50 text-indigo-700'
-                      : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-400'
+                      : 'text-gray-500 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-zinc-100'
                   }`}
                 >
                   {route.name}
@@ -247,11 +249,11 @@ export const Navbar: React.FC = () => {
               );
             })}
 
-            <div className="pt-4 border-t border-gray-100 flex flex-col gap-2">
+            <div className="pt-4 border-t border-gray-100 dark:border-zinc-800 flex flex-col gap-2">
               {isLoggedIn ? (
                 <button
                   onClick={handleLogout}
-                  className="w-full text-center rounded-lg bg-gray-50 border border-gray-200 px-4 py-2.5 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                  className="w-full text-center rounded-lg bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 px-4 py-2.5 text-base font-medium text-gray-600 dark:text-zinc-400 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:text-gray-900 dark:hover:text-zinc-200 transition-colors"
                 >
                   Logout
                 </button>
@@ -260,7 +262,7 @@ export const Navbar: React.FC = () => {
                   <Link
                     href="/login"
                     onClick={() => setIsOpen(false)}
-                    className="w-full text-center rounded-lg bg-gray-50 border border-gray-200 px-4 py-2.5 text-base font-medium text-gray-600"
+                    className="w-full text-center rounded-lg bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 px-4 py-2.5 text-base font-medium text-gray-600 dark:text-zinc-300"
                   >
                     Log In
                   </Link>

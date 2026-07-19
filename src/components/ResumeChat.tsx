@@ -57,7 +57,7 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
 
   return (
     <div
-      className="rounded-2xl flex flex-col h-96 border border-gray-200/80 shadow-sm border-t-4 bg-white"
+      className="rounded-2xl flex flex-col h-96 border border-gray-200/80 dark:border-zinc-800 shadow-sm border-t-4 bg-white dark:bg-zinc-900"
       style={{ borderTopColor: "#4F46E5" }}
     >
       <div className="px-6 pt-6 pb-3 flex items-center gap-2">
@@ -72,7 +72,7 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
 
       <div className="flex-1 overflow-y-auto px-6 py-2 space-y-3">
         {messages.length === 0 && (
-          <p className="text-xs text-center mt-10 text-gray-400 font-mono">
+          <p className="text-xs text-center mt-10 text-gray-400 dark:text-zinc-600 font-mono">
             Ask about experience, skills, or fit for a role.
           </p>
         )}
@@ -87,7 +87,7 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
               className={`max-w-[80%] rounded-xl px-4 py-2 text-xs leading-relaxed ${
                 m.role === "user"
                   ? "bg-indigo-600 text-white shadow-sm"
-                  : "bg-indigo-50/50 text-gray-700 border border-indigo-100/50"
+                  : "bg-indigo-50/50 dark:bg-indigo-950/30 text-gray-700 dark:text-zinc-300 border border-indigo-100/50 dark:border-indigo-900/50"
               }`}
             >
               {m.content}
@@ -97,7 +97,7 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
 
         {loading && (
           <div className="flex justify-start">
-            <div className="px-4 py-2 text-xs text-gray-400 font-mono italic">thinking…</div>
+            <div className="px-4 py-2 text-xs text-gray-400 dark:text-zinc-600 font-mono italic">thinking…</div>
           </div>
         )}
 
@@ -106,7 +106,7 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
 
       {error && <p className="text-xs px-6 text-red-500 font-medium">{error}</p>}
 
-      <div className="px-6 py-4 flex gap-2 border-t border-gray-100">
+      <div className="px-6 py-4 flex gap-2 border-t border-gray-100 dark:border-zinc-800">
         <input
           type="text"
           value={input}
@@ -114,7 +114,7 @@ export default function ResumeChat({ resumeId }: { resumeId: string }) {
           onKeyDown={handleKeyDown}
           placeholder="Type a question…"
           disabled={loading}
-          className="flex-1 px-4 py-2 text-xs rounded-xl outline-none bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:bg-white transition-all disabled:opacity-50"
+          className="flex-1 px-4 py-2 text-xs rounded-xl outline-none bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-400 dark:placeholder:text-zinc-500 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 transition-all disabled:opacity-50"
         />
         <button
           onClick={sendMessage}

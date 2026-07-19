@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[600px] lg:min-h-[700px] w-full bg-gradient-to-b from-[#F8F7FF] via-[#EEF2FF] to-[#F8F7FF] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <section className="relative min-h-[600px] lg:min-h-[700px] w-full bg-gradient-to-b from-[#F8F7FF] dark:from-zinc-950 via-[#EEF2FF] dark:via-zinc-900 to-[#F8F7FF] dark:to-zinc-950 flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
       
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -57,7 +57,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/80 px-4 py-1.5 text-xs font-semibold text-indigo-700 mb-8 backdrop-blur-sm shadow-sm"
+          className="inline-flex items-center gap-2 rounded-full border border-indigo-200 dark:border-indigo-800 bg-white/80 dark:bg-zinc-900/80 px-4 py-1.5 text-xs font-semibold text-indigo-700 dark:text-indigo-400 mb-8 backdrop-blur-sm shadow-sm"
         >
           <span className="text-base">✨</span>
           AI-Powered. Professionally Yours.
@@ -68,7 +68,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-[1.1]"
+          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-zinc-100 leading-[1.1]"
           style={{ fontFamily: "'Outfit', sans-serif" }}
         >
           Build Resumes <br />
@@ -80,7 +80,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 max-w-2xl text-base sm:text-lg text-gray-500 font-normal leading-relaxed"
+          className="mt-6 max-w-2xl text-base sm:text-lg text-gray-500 dark:text-zinc-400 font-normal leading-relaxed"
         >
           Create stunning resumes in minutes with AI-powered suggestions and professional templates designed to get you hired.
         </motion.p>
@@ -103,7 +103,7 @@ export const Hero: React.FC = () => {
           </Link>
           <Link
             href="/brouse-resumes"
-            className="rounded-full bg-white border border-gray-200 px-7 py-3.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 hover:scale-[1.02] shadow-sm"
+            className="rounded-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 px-7 py-3.5 text-sm font-semibold text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 hover:border-gray-300 transition-all duration-200 hover:scale-[1.02] shadow-sm"
           >
             View Templates
           </Link>
@@ -123,8 +123,8 @@ export const Hero: React.FC = () => {
               </div>
             ))}
           </div>
-          <p className="text-sm text-gray-500">
-            Join <span className="font-bold text-gray-800">10,000+</span> job seekers who have<br className="sm:hidden" /> built better resumes with ResumeForge
+          <p className="text-sm text-gray-500 dark:text-zinc-400">
+            Join <span className="font-bold text-gray-800 dark:text-zinc-200">10,000+</span> job seekers who have<br className="sm:hidden" /> built better resumes with ResumeForge
           </p>
         </motion.div>
 

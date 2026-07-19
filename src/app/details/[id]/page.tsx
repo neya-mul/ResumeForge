@@ -43,9 +43,9 @@ export default async function Details({
 
   if (!res.ok) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F8F7FF]">
-        <div className="p-8 rounded-2xl bg-white border border-gray-150 shadow-sm text-center max-w-sm">
-          <p className="text-lg text-gray-500">This resume couldn't be found.</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#F8F7FF] dark:bg-zinc-950">
+        <div className="p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-150 dark:border-zinc-800 shadow-sm text-center max-w-sm">
+          <p className="text-lg text-gray-500 dark:text-zinc-400">This resume couldn't be found.</p>
         </div>
       </div>
     );
@@ -55,7 +55,7 @@ export default async function Details({
   const resume: Resume = data.resume;
 
   return (
-    <div className="min-h-screen py-16 px-6 bg-[#F8F7FF] text-gray-900">
+    <div className="min-h-screen py-16 px-6 bg-[#F8F7FF] dark:bg-zinc-950 text-gray-900 dark:text-zinc-100">
       <style>{`
         @keyframes rf-fade-up {
           from { opacity: 0; transform: translateY(14px); }
@@ -84,7 +84,7 @@ export default async function Details({
           <p className="text-xs tracking-[0.2em] uppercase mb-2 text-indigo-600 font-mono font-bold">
             Candidate Profile
           </p>
-          <h1 className="text-4xl font-bold mb-1 text-gray-900" style={{ fontFamily: "'Outfit', sans-serif" }}>
+          <h1 className="text-4xl font-bold mb-1 text-gray-900 dark:text-zinc-100" style={{ fontFamily: "'Outfit', sans-serif" }}>
             {resume.fullName}
           </h1>
           <p className="text-lg font-semibold text-indigo-600">{resume.title}</p>
@@ -92,14 +92,14 @@ export default async function Details({
 
         {/* Document grid */}
         <div
-          className="rf-reveal grid grid-cols-1 md:grid-cols-[280px_1fr] rounded-2xl overflow-hidden mb-8 border border-gray-200/80 shadow-md"
-          style={{ animationDelay: "80ms", background: "#FFFFFF" }}
+          className="rf-reveal grid grid-cols-1 md:grid-cols-[280px_1fr] rounded-2xl overflow-hidden mb-8 border border-gray-200/80 dark:border-zinc-800 shadow-md bg-white dark:bg-zinc-900"
+          style={{ animationDelay: "80ms" }}
         >
           {/* Sidebar */}
-          <div className="p-8 space-y-8 bg-gray-50/50 border-b md:border-b-0 md:border-r border-gray-250/60">
+          <div className="p-8 space-y-8 bg-gray-50/50 dark:bg-zinc-900/50 border-b md:border-b-0 md:border-r border-gray-250/60 dark:border-zinc-800">
             <div>
               <SectionLabel>Contact</SectionLabel>
-              <div className="space-y-2 text-sm text-gray-600">
+              <div className="space-y-2 text-sm text-gray-600 dark:text-zinc-400">
                 <p className="flex items-center gap-1.5">
                   <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -157,9 +157,9 @@ export default async function Details({
                   {resume.education.map((edu, i) => (
                     <div key={i}>
                       {edu.degree && (
-                        <p className="text-sm font-bold text-gray-900">{edu.degree}</p>
+                        <p className="text-sm font-bold text-gray-900 dark:text-zinc-100">{edu.degree}</p>
                       )}
-                      <p className="text-xs text-gray-500 mt-0.5">
+                      <p className="text-xs text-gray-500 dark:text-zinc-500 mt-0.5">
                         {edu.institution}
                         {edu.duration ? ` \u00b7 ${edu.duration}` : ""}
                       </p>
@@ -175,7 +175,7 @@ export default async function Details({
             {resume.summary && (
               <div>
                 <SectionLabel>Summary</SectionLabel>
-                <p className="leading-relaxed text-gray-700 text-sm whitespace-pre-line">{resume.summary}</p>
+                <p className="leading-relaxed text-gray-700 dark:text-zinc-300 text-sm whitespace-pre-line">{resume.summary}</p>
               </div>
             )}
 
@@ -186,8 +186,8 @@ export default async function Details({
                   {resume.experience.map((exp, i) => (
                     <div key={i} className="pl-5 border-l-2 border-indigo-100 relative">
                       <div className="absolute w-2 h-2 rounded-full bg-indigo-650 -left-[5px] top-1.5" />
-                      <p className="font-bold text-gray-900 text-sm">{exp.role}</p>
-                      <p className="text-xs text-gray-500 font-medium mt-0.5">
+                      <p className="font-bold text-gray-900 dark:text-zinc-100 text-sm">{exp.role}</p>
+                      <p className="text-xs text-gray-500 dark:text-zinc-500 font-medium mt-0.5">
                         {exp.company} &middot; {exp.duration}
                       </p>
                     </div>
@@ -210,7 +210,7 @@ export default async function Details({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs tracking-[0.15em] uppercase mb-3 text-indigo-800 font-mono font-bold">
+    <p className="text-xs tracking-[0.15em] uppercase mb-3 text-indigo-800 dark:text-indigo-400 font-mono font-bold">
       {children}
     </p>
   );

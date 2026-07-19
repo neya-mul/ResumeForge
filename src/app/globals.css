@@ -2,6 +2,9 @@
 
 @import "tailwindcss";
 
+/* Enable class-based dark mode (Tailwind v4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --primary: #4F46E5;
   --primary-dark: #3730A3;
@@ -20,6 +23,22 @@
   --border-light: #F3F4F6;
   --violet: #7C3AED;
   --violet-light: #A78BFA;
+  --skeleton-base: #E5E7EB;
+  --skeleton-highlight: #F3F4F6;
+}
+
+/* Dark mode CSS custom properties */
+.dark {
+  --bg: #09090B;
+  --surface: #18181B;
+  --surface-alt: #27272A;
+  --text-primary: #F4F4F5;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --border: #3F3F46;
+  --border-light: #27272A;
+  --skeleton-base: #27272A;
+  --skeleton-highlight: #3F3F46;
 }
 
 @keyframes fadeSlideUp {

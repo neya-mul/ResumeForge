@@ -95,7 +95,7 @@ export default function AddResumePage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F8F7FF] text-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[#F8F7FF] dark:bg-zinc-950 text-gray-900 dark:text-zinc-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         
         {/* Title Block */}
@@ -104,16 +104,16 @@ export default function AddResumePage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900" style={{ fontFamily: "'Outfit', sans-serif" }}>
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-zinc-100" style={{ fontFamily: "'Outfit', sans-serif" }}>
             Forge New <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Resume Schema</span>
           </h1>
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="text-sm text-gray-500 dark:text-zinc-400 mt-2">
             Input structured data elements. Presentation layout compiles automatically for ATS target parsers.
           </p>
         </motion.div>
 
         {error && (
-          <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm">
+          <div className="mb-6 p-4 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 text-sm">
             {error}
           </div>
         )}
@@ -121,112 +121,112 @@ export default function AddResumePage() {
         <form onSubmit={handleSubmit} className="space-y-8">
           
           {/* Metadata Section */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-sm font-bold text-indigo-600 mb-4 font-mono uppercase tracking-wider">01. Document Indexing</h2>
+          <div className="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 mb-4 font-mono uppercase tracking-wider">01. Document Indexing</h2>
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Resume Configuration Title</label>
+              <label className="block text-xs font-bold text-gray-500 dark:text-zinc-450 uppercase mb-2">Resume Configuration Title</label>
               <input 
                 type="text" name="title" value={formData.title} onChange={handleInputChange} required
-                className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all"
+                className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-gray-900 dark:text-zinc-100 transition-all"
               />
             </div>
           </div>
 
           {/* Contact Information */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-sm font-bold text-indigo-600 mb-4 font-mono uppercase tracking-wider">02. Core Contact Block</h2>
+          <div className="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 mb-4 font-mono uppercase tracking-wider">02. Core Contact Block</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name</label>
-                <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
+                <label className="block text-xs font-bold text-gray-500 dark:text-zinc-450 uppercase mb-2">Full Name</label>
+                <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-gray-900 dark:text-zinc-100 transition-all" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Email Address</label>
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
+                <label className="block text-xs font-bold text-gray-500 dark:text-zinc-450 uppercase mb-2">Email Address</label>
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-gray-900 dark:text-zinc-100 transition-all" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Phone Number</label>
-                <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
+                <label className="block text-xs font-bold text-gray-500 dark:text-zinc-450 uppercase mb-2">Phone Number</label>
+                <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-gray-900 dark:text-zinc-100 transition-all" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Location (City, Country)</label>
-                <input type="text" name="location" value={formData.location} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
+                <label className="block text-xs font-bold text-gray-500 dark:text-zinc-450 uppercase mb-2">Location (City, Country)</label>
+                <input type="text" name="location" value={formData.location} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-gray-900 dark:text-zinc-100 transition-all" />
               </div>
             </div>
             <div className="mt-4">
-              <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Portfolio / Website Link</label>
-              <input type="url" name="website" value={formData.website} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
+              <label className="block text-xs font-bold text-gray-500 dark:text-zinc-450 uppercase mb-2">Portfolio / Website Link</label>
+              <input type="url" name="website" value={formData.website} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-gray-900 dark:text-zinc-100 transition-all" />
             </div>
           </div>
 
           {/* Professional Profile Summary */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-sm font-bold text-indigo-600 mb-4 font-mono uppercase tracking-wider">03. Executive Summary</h2>
-            <textarea name="summary" value={formData.summary} onChange={handleInputChange} rows={4} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" placeholder="Briefly explain your executive engineering trajectory..." />
+          <div className="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 mb-4 font-mono uppercase tracking-wider">03. Executive Summary</h2>
+            <textarea name="summary" value={formData.summary} onChange={handleInputChange} rows={4} className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-gray-900 dark:text-zinc-100 transition-all" placeholder="Briefly explain your executive engineering trajectory..." />
           </div>
 
           {/* Core Technical Capabilities */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-sm font-bold text-indigo-600 mb-4 font-mono uppercase tracking-wider">04. Technical Competencies Matrix</h2>
-            <input type="text" name="skills" value={formData.skills} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" placeholder="React, Node.js, TypeScript, Docker, Go" />
-            <p className="text-xs text-gray-400 mt-2 font-mono">Delimit separate entities cleanly with commas.</p>
+          <div className="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 mb-4 font-mono uppercase tracking-wider">04. Technical Competencies Matrix</h2>
+            <input type="text" name="skills" value={formData.skills} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-gray-900 dark:text-zinc-100 transition-all" placeholder="React, Node.js, TypeScript, Docker, Go" />
+            <p className="text-xs text-gray-400 dark:text-zinc-500 mt-2 font-mono">Delimit separate entities cleanly with commas.</p>
           </div>
 
           {/* Dynamic Experience Timeline */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-6">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-              <h2 className="text-sm font-bold text-indigo-600 font-mono uppercase tracking-wider">05. Professional Experience Records</h2>
-              <button type="button" onClick={addExperienceBlock} className="text-xs font-semibold px-3 py-1.5 bg-indigo-50 border border-indigo-150 hover:bg-indigo-100 rounded-lg text-indigo-600 transition-colors">
+          <div className="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 shadow-sm space-y-6">
+            <div className="flex items-center justify-between border-b border-gray-100 dark:border-zinc-800 pb-3">
+              <h2 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 font-mono uppercase tracking-wider">05. Professional Experience Records</h2>
+              <button type="button" onClick={addExperienceBlock} className="text-xs font-semibold px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-150 dark:border-indigo-900/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg text-indigo-600 dark:text-indigo-400 transition-colors">
                 + Add Record
               </button>
             </div>
             {formData.experience.map((exp, idx) => (
-              <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-4 border-l-2 border-indigo-100 pl-4 space-y-2 md:space-y-0">
+              <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-4 border-l-2 border-indigo-100 dark:border-zinc-800 pl-4 space-y-2 md:space-y-0">
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1">Company Entity</label>
-                  <input type="text" name="company" value={exp.company} onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
+                  <label className="block text-xs text-gray-500 dark:text-zinc-400 mb-1">Company Entity</label>
+                  <input type="text" name="company" value={exp.company} onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-xs text-gray-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1">Functional Position Role</label>
-                  <input type="text" name="position" value={exp.position} onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
+                  <label className="block text-xs text-gray-500 dark:text-zinc-400 mb-1">Functional Position Role</label>
+                  <input type="text" name="position" value={exp.position} onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-xs text-gray-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1">Start Timeline String</label>
-                  <input type="text" name="startDate" value={exp.startDate} placeholder="e.g. June 2022" onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
+                  <label className="block text-xs text-gray-500 dark:text-zinc-400 mb-1">Start Timeline String</label>
+                  <input type="text" name="startDate" value={exp.startDate} placeholder="e.g. June 2022" onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-xs text-gray-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1">End Timeline String</label>
-                  <input type="text" name="endDate" value={exp.endDate} placeholder="Present" onChange={(e) => handleExpChange(idx, e)} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
+                  <label className="block text-xs text-gray-500 dark:text-zinc-400 mb-1">End Timeline String</label>
+                  <input type="text" name="endDate" value={exp.endDate} placeholder="Present" onChange={(e) => handleExpChange(idx, e)} className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-xs text-gray-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div className="md:col-span-2 mt-2">
-                  <label className="block text-xs text-gray-500 mb-1">Core Deliverables & Contributions</label>
-                  <textarea name="description" value={exp.description} onChange={(e) => handleExpChange(idx, e)} rows={3} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" placeholder="Engineered high performance indexing services scaling optimization bounds by 40%..." />
+                  <label className="block text-xs text-gray-500 dark:text-zinc-400 mb-1">Core Deliverables & Contributions</label>
+                  <textarea name="description" value={exp.description} onChange={(e) => handleExpChange(idx, e)} rows={3} required className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-xs text-gray-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none focus:border-indigo-500 transition-all" placeholder="Engineered high performance indexing services scaling optimization bounds by 40%..." />
                 </div>
               </div>
             ))}
           </div>
 
           {/* Dynamic Academic Timeline */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-6">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-              <h2 className="text-sm font-bold text-indigo-600 font-mono uppercase tracking-wider">06. Academic History Matrix</h2>
-              <button type="button" onClick={addEducationBlock} className="text-xs font-semibold px-3 py-1.5 bg-indigo-50 border border-indigo-150 hover:bg-indigo-100 rounded-lg text-indigo-600 transition-colors">
+          <div className="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 shadow-sm space-y-6">
+            <div className="flex items-center justify-between border-b border-gray-100 dark:border-zinc-800 pb-3">
+              <h2 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 font-mono uppercase tracking-wider">06. Academic History Matrix</h2>
+              <button type="button" onClick={addEducationBlock} className="text-xs font-semibold px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-150 dark:border-indigo-900/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg text-indigo-600 dark:text-indigo-400 transition-colors">
                 + Add Milestone
               </button>
             </div>
             {formData.education.map((edu, idx) => (
-              <div key={idx} className="grid grid-cols-1 md:grid-cols-3 gap-4 border-l-2 border-indigo-100 pl-4">
+              <div key={idx} className="grid grid-cols-1 md:grid-cols-3 gap-4 border-l-2 border-indigo-100 dark:border-zinc-800 pl-4">
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1">Academic Institution</label>
-                  <input type="text" name="school" value={edu.school} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
+                  <label className="block text-xs text-gray-500 dark:text-zinc-400 mb-1">Academic Institution</label>
+                  <input type="text" name="school" value={edu.school} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-xs text-gray-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1">Conferred Degree/Major</label>
-                  <input type="text" name="degree" value={edu.degree} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
+                  <label className="block text-xs text-gray-500 dark:text-zinc-400 mb-1">Conferred Degree/Major</label>
+                  <input type="text" name="degree" value={edu.degree} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-xs text-gray-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1">Graduation Year</label>
-                  <input type="text" name="graduationYear" value={edu.graduationYear} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" placeholder="e.g. 2025" />
+                  <label className="block text-xs text-gray-500 dark:text-zinc-400 mb-1">Graduation Year</label>
+                  <input type="text" name="graduationYear" value={edu.graduationYear} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 p-3 text-xs text-gray-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none focus:border-indigo-500 transition-all" placeholder="e.g. 2025" />
                 </div>
               </div>
             ))}

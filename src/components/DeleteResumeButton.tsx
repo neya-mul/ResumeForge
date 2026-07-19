@@ -38,8 +38,8 @@ export default function DeleteResumeButton({ resumeId, resumeTitle }: DeleteResu
 
   if (confirming) {
     return (
-      <div className="flex items-center gap-2 text-xs bg-red-50 border border-red-100 rounded-lg p-2 animate-reveal">
-        <span className="text-red-700 font-medium">Delete "{resumeTitle}"?</span>
+      <div className="flex items-center gap-2 text-xs bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50 rounded-lg p-2 animate-reveal">
+        <span className="text-red-700 dark:text-red-400 font-medium">Delete "{resumeTitle}"?</span>
         <button
           onClick={handleDelete}
           disabled={isPending}
@@ -50,7 +50,7 @@ export default function DeleteResumeButton({ resumeId, resumeTitle }: DeleteResu
         <button
           onClick={() => setConfirming(false)}
           disabled={isPending}
-          className="px-2.5 py-1 rounded border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 transition-all text-[10px]"
+          className="px-2.5 py-1 rounded border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-gray-500 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-700 transition-all text-[10px]"
         >
           Cancel
         </button>
