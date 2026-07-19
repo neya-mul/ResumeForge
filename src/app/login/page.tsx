@@ -64,7 +64,7 @@ export default function LoginPage() {
                 </div>
 
                 {/* Demo Helper Action */}
-                <div className="p-4 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/50 rounded-xl flex items-center justify-between">
+                {/* <div className="p-4 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/50 rounded-xl flex items-center justify-between">
                     <div className="text-xs text-gray-600 dark:text-zinc-400">
                         <span className="font-bold text-indigo-700 dark:text-indigo-400 block mb-0.5">Presentation Mode</span>
                         Quickly load sample profile credentials.
@@ -76,7 +76,7 @@ export default function LoginPage() {
                     >
                         Auto-Fill
                     </button>
-                </div>
+                </div> */}
 
                 <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-4 rounded-md">
