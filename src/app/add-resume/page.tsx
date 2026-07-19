@@ -86,7 +86,7 @@ export default function AddResumePage() {
 
 
       console.log(response)
-      // router.push('/my-resumes'); // Relocate user on successful pipeline submission
+      router.push('/brouse-resumes'); // Relocate user on successful pipeline submission
     } catch (err: any) {
       setError(err.message || 'Network connection interface error.');
     } finally {
