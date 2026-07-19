@@ -1,55 +1,103 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Sparkles, FileText, ShieldCheck, Download } from 'lucide-react';
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
 
 export const FeaturesSection = () => {
   const features = [
     {
-      title: 'AI-Powered Tailoring',
-      description: 'Instantly align your resume sentences with specific job descriptions using targeted Groq LLM optimization.',
-      icon: '⚡',
+      title: 'AI-Powered Assistance',
+      description: 'Get smart suggestions to enhance your content and make your resume shine.',
+      icon: Sparkles,
+      color: 'from-indigo-500 to-violet-500',
+      bg: 'bg-indigo-50',
     },
     {
-      title: 'ATS-Friendly Formatting',
-      description: 'Clean, parseable templates designed strictly against industry tracking standards to maximize callback rates.',
-      icon: '🎯',
+      title: 'Professional Templates',
+      description: 'Choose from modern, ATS-friendly templates designed to impress recruiters.',
+      icon: FileText,
+      color: 'from-violet-500 to-purple-500',
+      bg: 'bg-violet-50',
     },
     {
-      title: 'Dynamic Recommendations',
-      description: 'Get real-time contextual improvements and alternative wording metrics directly inside the workspace.',
-      icon: '📊',
+      title: 'ATS Optimized',
+      description: 'Built to pass Applicant Tracking Systems and get in front of more employers.',
+      icon: ShieldCheck,
+      color: 'from-purple-500 to-pink-500',
+      bg: 'bg-purple-50',
     },
     {
-      title: 'Instant Markdown/PDF Export',
-      description: 'Export structured, pixel-perfect documents ready to submit to high-performance tech roles.',
-      icon: '📂',
+      title: 'Export & Share',
+      description: 'Download in PDF or share a link instantly with recruiters.',
+      icon: Download,
+      color: 'from-pink-500 to-rose-500',
+      bg: 'bg-pink-50',
     },
   ];
 
   return (
-    <section className="py-20 border-b border-slate-900 bg-slate-950">
+    <section id="features-section" className="py-24 bg-[#F8F7FF]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
-            Built for Modern <span className="text-emerald-500">Engineering Workflows</span>
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <span className="inline-flex items-center rounded-full border border-indigo-200 bg-white px-4 py-1.5 text-xs font-semibold text-indigo-700 mb-4 shadow-sm">
+            Powerful Features
+          </span>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            Everything You Need to <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Stand Out</span>
           </h2>
-          <p className="mt-4 text-slate-400">
-            Stop fighting word processors. Use a structured, schema-driven environment backed by smart contextual intelligence.
+          <p className="mt-4 text-gray-500 text-base">
+            Smart tools. Beautiful templates. Better opportunities.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Feature Cards */}
+        <motion.div
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {features.map((feature, i) => (
-            <div 
-              key={i} 
-              className="group rounded-xl border border-slate-900 bg-slate-900/20 p-6 transition-all duration-300 hover:border-slate-800 hover:bg-slate-900/40"
+            <motion.div 
+              key={i}
+              variants={cardVariants}
+              className="group rounded-2xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-100/50 hover:-translate-y-1"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 border border-slate-800 text-lg group-hover:border-emerald-500/30 group-hover:bg-emerald-950/20 transition-colors">
-                {feature.icon}
+              <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${feature.bg} transition-colors group-hover:bg-gradient-to-br group-hover:${feature.color}`}>
+                <feature.icon className="h-6 w-6 text-indigo-600 group-hover:text-indigo-600 transition-colors" />
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-slate-200">{feature.title}</h3>
-              <p className="mt-2 text-sm text-slate-400 leading-relaxed">{feature.description}</p>
-            </div>
+              <h3 className="mt-5 text-lg font-semibold text-gray-900">{feature.title}</h3>
+              <p className="mt-2 text-sm text-gray-500 leading-relaxed">{feature.description}</p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

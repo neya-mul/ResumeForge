@@ -1,37 +1,79 @@
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const stepVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
 export const StepsSection = () => {
   const steps = [
-    { step: '01', title: 'Input Baseline Data', desc: 'Paste your current profile information or markdown template into the dashboard interface.' },
-    { step: '02', title: 'Target Target Job', desc: 'Drop the target role requirements to hook up contextual AI relevance vectors.' },
-    { step: '03', title: 'Refine & Polish', desc: 'Review alternative metrics and instantly approve system recommendations.' },
-    { step: '04', title: 'Deploy Artifact', desc: 'Generate standard schema JSON or compile a production-ready export.' },
+    { step: '01', title: 'Enter Your Details', desc: 'Fill in your professional information, work history, and skills into our guided form.' },
+    { step: '02', title: 'Choose a Template', desc: 'Pick from our collection of modern, ATS-friendly templates designed for your industry.' },
+    { step: '03', title: 'Enhance with AI', desc: 'Let our AI suggest improvements, optimize keywords, and refine your content.' },
+    { step: '04', title: 'Download & Apply', desc: 'Export your polished resume as a PDF and start landing interviews.' },
   ];
 
   return (
-    <section className="py-20 border-b border-slate-900 bg-slate-950">
+    <section className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
-            The <span className="text-emerald-500">Forge Pipelines</span>
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <span className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs font-semibold text-indigo-700 mb-4">
+            How It Works
+          </span>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            Four Simple <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Steps</span> to Your Dream Resume
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 relative">
+        {/* Steps Grid */}
+        <motion.div
+          className="grid grid-cols-1 gap-8 md:grid-cols-4 relative"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {steps.map((item, i) => (
-            <div key={i} className="relative flex flex-col items-start">
-              <div className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">
-                Phase {item.step}
+            <motion.div key={i} variants={stepVariants} className="relative flex flex-col items-start">
+              {/* Step Number */}
+              <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white font-bold text-sm mb-4 shadow-lg shadow-indigo-500/20">
+                {item.step}
               </div>
-              <h3 className="text-xl font-semibold text-slate-200 mb-2">{item.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
               
+              {/* Connector Arrow */}
               {i < 3 && (
-                <div className="hidden md:block absolute top-2 right-4 translate-x-1/2 text-slate-800 font-mono text-xl">
+                <div className="hidden md:block absolute top-6 right-0 translate-x-1/2 text-indigo-300 text-xl">
                   →
                 </div>
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

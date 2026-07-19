@@ -42,20 +42,20 @@ export default function ResumeAiAssistant({ resumeId }: AiAssistantProps) {
   };
 
   return (
-    <div className="rounded-xl border border-slate-900 bg-slate-900/10 p-6 space-y-6">
+    <div className="rounded-2xl border border-gray-100 bg-white p-6 space-y-6 shadow-sm">
       <div>
-        <h3 className="text-lg font-bold text-slate-200">
-          ResumeForge <span className="text-emerald-500">AI Optimization Engine</span>
+        <h3 className="text-lg font-bold text-gray-900">
+          ResumeForge <span className="text-indigo-600">AI Optimization Engine</span>
         </h3>
-        <p className="text-xs text-slate-500 font-mono mt-1">
+        <p className="text-[10px] text-gray-400 font-mono mt-1 uppercase tracking-wider">
           Model Instance Matrix: Llama-3-8B via Groq Core
         </p>
       </div>
 
       {/* Output Console Box */}
       {analysis && (
-        <div className="p-4 rounded-xl bg-slate-950 border border-slate-900 text-sm text-slate-300 leading-relaxed whitespace-pre-wrap font-sans">
-          <div className="text-[10px] text-emerald-500 font-mono tracking-wider mb-2 uppercase border-b border-slate-900 pb-1">
+        <div className="p-4 rounded-xl bg-gray-50 border border-gray-150 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap font-sans shadow-inner">
+          <div className="text-[10px] text-indigo-600 font-mono tracking-wider mb-2 uppercase border-b border-gray-200 pb-1 font-bold">
             Analysis Stream Output
           </div>
           {analysis}
@@ -63,7 +63,7 @@ export default function ResumeAiAssistant({ resumeId }: AiAssistantProps) {
       )}
 
       {error && (
-        <div className="p-3 rounded-lg bg-red-950/30 border border-red-900 text-red-400 text-xs font-mono">
+        <div className="p-3 rounded-xl bg-red-50 border border-red-150 text-red-650 text-xs font-mono">
           🛑 {error}
         </div>
       )}
@@ -74,14 +74,14 @@ export default function ResumeAiAssistant({ resumeId }: AiAssistantProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Ask about ATS compatibility, missing core skills, or phrasing improvements..."
-          className="w-full min-h-[80px] rounded-lg bg-slate-950 border border-slate-900 p-3 text-xs text-slate-200 placeholder-slate-600 focus:outline-none focus:border-emerald-500/50 resize-y"
+          className="w-full min-h-[80px] rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:bg-white resize-y transition-all"
           disabled={loading}
         />
         
         <button
           type="submit"
           disabled={loading || !query.trim()}
-          className="w-full py-2.5 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-900 disabled:text-slate-600 text-slate-950 font-bold text-xs font-mono tracking-wide transition-all duration-150 uppercase"
+          className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-750 disabled:bg-gray-100 disabled:text-gray-400 text-white font-bold text-xs font-mono tracking-wide transition-all uppercase shadow-sm"
         >
           {loading ? 'Processing Model Reasoning Matrix...' : 'Execute AI Analysis'}
         </button>

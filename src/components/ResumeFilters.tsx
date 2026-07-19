@@ -65,44 +65,50 @@ export default function ResumeFilters({ totalPages, currentPage }: ResumeFilters
 
   return (
     <div className="mb-8 space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <input
-          type="text"
-          placeholder="Search by name, title, summary..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="bg-slate-900/60 border border-slate-800 rounded-lg px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-emerald-500"
-        />
-        <input
-          type="text"
-          placeholder="Filter by location..."
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          className="bg-slate-900/60 border border-slate-800 rounded-lg px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-emerald-500"
-        />
-        <input
-          type="text"
-          placeholder="Filter by skill..."
-          value={skill}
-          onChange={(e) => setSkill(e.target.value)}
-          className="bg-slate-900/60 border border-slate-800 rounded-lg px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-emerald-500"
-        />
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search by name, title, summary..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-sm"
+          />
+        </div>
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Filter by location..."
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-sm"
+          />
+        </div>
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Filter by skill..."
+            value={skill}
+            onChange={(e) => setSkill(e.target.value)}
+            className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-sm"
+          />
+        </div>
       </div>
 
       {totalPages > 1 && (
-        <div className="flex items-center gap-2 flex-wrap text-sm">
+        <div className="flex items-center gap-2 flex-wrap text-sm justify-center pt-2">
           {pageNumbers.map((num) => (
-            <span
+            <button
               key={num}
               onClick={() => goToPage(num)}
-              className={`cursor-pointer px-3 py-1 rounded-md border transition-colors ${
+              className={`cursor-pointer px-3.5 py-1.5 rounded-lg border text-xs font-bold transition-all ${
                 num === currentPage
-                  ? 'bg-emerald-500 text-slate-950 border-emerald-500'
-                  : 'border-slate-800 text-slate-300 hover:border-emerald-500 hover:text-emerald-400'
+                  ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                  : 'border-gray-200 bg-white text-gray-600 hover:border-indigo-500 hover:text-indigo-600'
               }`}
             >
               {num}
-            </span>
+            </button>
           ))}
         </div>
       )}

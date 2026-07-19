@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { authClient } from '@/lib/auth-client';
+import { motion } from 'framer-motion';
 
 export default function AddResumePage() {
-  const {data: session} = authClient.useSession()
-  const user = session?.user
+  const {data: session} = authClient.useSession();
+  const user = session?.user;
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -84,8 +85,7 @@ export default function AddResumePage() {
         throw new Error(errData.message || 'Failed to sync record.');
       }
 
-
-      console.log(response)
+      console.log(response);
       router.push('/brouse-resumes'); // Relocate user on successful pipeline submission
     } catch (err: any) {
       setError(err.message || 'Network connection interface error.');
@@ -95,21 +95,25 @@ export default function AddResumePage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[#F8F7FF] text-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         
         {/* Title Block */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-100">
-            Forge New <span className="text-emerald-500">Resume Schema</span>
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            Forge New <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Resume Schema</span>
           </h1>
-          <p className="text-sm text-slate-400 mt-2">
+          <p className="text-sm text-gray-500 mt-2">
             Input structured data elements. Presentation layout compiles automatically for ATS target parsers.
           </p>
-        </div>
+        </motion.div>
 
         {error && (
-          <div className="mb-6 p-4 rounded-xl bg-red-950/30 border border-red-900 text-red-400 text-sm">
+          <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm">
             {error}
           </div>
         )}
@@ -117,112 +121,112 @@ export default function AddResumePage() {
         <form onSubmit={handleSubmit} className="space-y-8">
           
           {/* Metadata Section */}
-          <div className="bg-slate-900/40 border border-slate-900 rounded-xl p-6">
-            <h2 className="text-lg font-semibold text-emerald-400 mb-4 font-mono text-xs uppercase tracking-wider">01. Document Indexing</h2>
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-indigo-600 mb-4 font-mono uppercase tracking-wider">01. Document Indexing</h2>
             <div>
-              <label className="block text-xs font-medium text-slate-400 uppercase mb-2">Resume Configuration Title</label>
+              <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Resume Configuration Title</label>
               <input 
                 type="text" name="title" value={formData.title} onChange={handleInputChange} required
-                className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-100"
+                className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all"
               />
             </div>
           </div>
 
           {/* Contact Information */}
-          <div className="bg-slate-900/40 border border-slate-900 rounded-xl p-6">
-            <h2 className="text-lg font-semibold text-emerald-400 mb-4 font-mono text-xs uppercase tracking-wider">02. Core Contact Block</h2>
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-indigo-600 mb-4 font-mono uppercase tracking-wider">02. Core Contact Block</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-medium text-slate-400 uppercase mb-2">Full Name</label>
-                <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-100" />
+                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name</label>
+                <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-slate-400 uppercase mb-2">Email Address</label>
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-100" />
+                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Email Address</label>
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-slate-400 uppercase mb-2">Phone Number</label>
-                <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-100" />
+                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Phone Number</label>
+                <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-slate-400 uppercase mb-2">Location (City, Country)</label>
-                <input type="text" name="location" value={formData.location} onChange={handleInputChange} className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-100" />
+                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Location (City, Country)</label>
+                <input type="text" name="location" value={formData.location} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
               </div>
             </div>
             <div className="mt-4">
-              <label className="block text-xs font-medium text-slate-400 uppercase mb-2">Portfolio / Website Link</label>
-              <input type="url" name="website" value={formData.website} onChange={handleInputChange} className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-100" />
+              <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Portfolio / Website Link</label>
+              <input type="url" name="website" value={formData.website} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" />
             </div>
           </div>
 
           {/* Professional Profile Summary */}
-          <div className="bg-slate-900/40 border border-slate-900 rounded-xl p-6">
-            <h2 className="text-lg font-semibold text-emerald-400 mb-4 font-mono text-xs uppercase tracking-wider">03. Executive Summary</h2>
-            <textarea name="summary" value={formData.summary} onChange={handleInputChange} rows={4} className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-100" placeholder="Briefly explain your executive engineering trajectory..." />
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-indigo-600 mb-4 font-mono uppercase tracking-wider">03. Executive Summary</h2>
+            <textarea name="summary" value={formData.summary} onChange={handleInputChange} rows={4} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" placeholder="Briefly explain your executive engineering trajectory..." />
           </div>
 
           {/* Core Technical Capabilities */}
-          <div className="bg-slate-900/40 border border-slate-900 rounded-xl p-6">
-            <h2 className="text-lg font-semibold text-emerald-400 mb-4 font-mono text-xs uppercase tracking-wider">04. Technical Competencies Matrix</h2>
-            <input type="text" name="skills" value={formData.skills} onChange={handleInputChange} className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-sm focus:outline-none focus:border-emerald-500 text-slate-100" placeholder="React, Node.js, TypeScript, Docker, Go" />
-            <p className="text-xs text-slate-500 mt-2 font-mono">Delimit separate entities cleanly with commas.</p>
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-indigo-600 mb-4 font-mono uppercase tracking-wider">04. Technical Competencies Matrix</h2>
+            <input type="text" name="skills" value={formData.skills} onChange={handleInputChange} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white text-gray-900 transition-all" placeholder="React, Node.js, TypeScript, Docker, Go" />
+            <p className="text-xs text-gray-400 mt-2 font-mono">Delimit separate entities cleanly with commas.</p>
           </div>
 
           {/* Dynamic Experience Timeline */}
-          <div className="bg-slate-900/40 border border-slate-900 rounded-xl p-6 space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-900 pb-2">
-              <h2 className="text-lg font-semibold text-emerald-400 font-mono text-xs uppercase tracking-wider">05. Professional Experience Records</h2>
-              <button type="button" onClick={addExperienceBlock} className="text-xs font-mono px-3 py-1 bg-slate-950 border border-slate-800 hover:border-emerald-500 rounded-lg text-emerald-400 transition-colors">
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-6">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <h2 className="text-sm font-bold text-indigo-600 font-mono uppercase tracking-wider">05. Professional Experience Records</h2>
+              <button type="button" onClick={addExperienceBlock} className="text-xs font-semibold px-3 py-1.5 bg-indigo-50 border border-indigo-150 hover:bg-indigo-100 rounded-lg text-indigo-600 transition-colors">
                 + Add Record
               </button>
             </div>
             {formData.experience.map((exp, idx) => (
-              <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-4 border-l-2 border-slate-900 pl-4 space-y-2 md:space-y-0">
+              <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-4 border-l-2 border-indigo-100 pl-4 space-y-2 md:space-y-0">
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Company Entity</label>
-                  <input type="text" name="company" value={exp.company} onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-xs text-slate-100" />
+                  <label className="block text-xs text-gray-500 mb-1">Company Entity</label>
+                  <input type="text" name="company" value={exp.company} onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Functional Position Role</label>
-                  <input type="text" name="position" value={exp.position} onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-xs text-slate-100" />
+                  <label className="block text-xs text-gray-500 mb-1">Functional Position Role</label>
+                  <input type="text" name="position" value={exp.position} onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Start Timeline String</label>
-                  <input type="text" name="startDate" value={exp.startDate} placeholder="e.g. June 2022" onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-xs text-slate-100" />
+                  <label className="block text-xs text-gray-500 mb-1">Start Timeline String</label>
+                  <input type="text" name="startDate" value={exp.startDate} placeholder="e.g. June 2022" onChange={(e) => handleExpChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">End Timeline String</label>
-                  <input type="text" name="endDate" value={exp.endDate} placeholder="Present" onChange={(e) => handleExpChange(idx, e)} className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-xs text-slate-100" />
+                  <label className="block text-xs text-gray-500 mb-1">End Timeline String</label>
+                  <input type="text" name="endDate" value={exp.endDate} placeholder="Present" onChange={(e) => handleExpChange(idx, e)} className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div className="md:col-span-2 mt-2">
-                  <label className="block text-xs text-slate-400 mb-1">Core Deliverables & Contributions</label>
-                  <textarea name="description" value={exp.description} onChange={(e) => handleExpChange(idx, e)} rows={3} required className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-xs text-slate-100" placeholder="Engineered high performance indexing services scaling optimization bounds by 40%..." />
+                  <label className="block text-xs text-gray-500 mb-1">Core Deliverables & Contributions</label>
+                  <textarea name="description" value={exp.description} onChange={(e) => handleExpChange(idx, e)} rows={3} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" placeholder="Engineered high performance indexing services scaling optimization bounds by 40%..." />
                 </div>
               </div>
             ))}
           </div>
 
           {/* Dynamic Academic Timeline */}
-          <div className="bg-slate-900/40 border border-slate-900 rounded-xl p-6 space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-900 pb-2">
-              <h2 className="text-lg font-semibold text-emerald-400 font-mono text-xs uppercase tracking-wider">06. Academic History Matrix</h2>
-              <button type="button" onClick={addEducationBlock} className="text-xs font-mono px-3 py-1 bg-slate-950 border border-slate-800 hover:border-emerald-500 rounded-lg text-emerald-400 transition-colors">
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-6">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <h2 className="text-sm font-bold text-indigo-600 font-mono uppercase tracking-wider">06. Academic History Matrix</h2>
+              <button type="button" onClick={addEducationBlock} className="text-xs font-semibold px-3 py-1.5 bg-indigo-50 border border-indigo-150 hover:bg-indigo-100 rounded-lg text-indigo-600 transition-colors">
                 + Add Milestone
               </button>
             </div>
             {formData.education.map((edu, idx) => (
-              <div key={idx} className="grid grid-cols-1 md:grid-cols-3 gap-4 border-l-2 border-slate-900 pl-4">
+              <div key={idx} className="grid grid-cols-1 md:grid-cols-3 gap-4 border-l-2 border-indigo-100 pl-4">
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Academic Institution</label>
-                  <input type="text" name="school" value={edu.school} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-xs text-slate-100" />
+                  <label className="block text-xs text-gray-500 mb-1">Academic Institution</label>
+                  <input type="text" name="school" value={edu.school} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Conferred Degree/Major</label>
-                  <input type="text" name="degree" value={edu.degree} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-xs text-slate-100" />
+                  <label className="block text-xs text-gray-500 mb-1">Conferred Degree/Major</label>
+                  <input type="text" name="degree" value={edu.degree} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Graduation Year</label>
-                  <input type="text" name="graduationYear" value={edu.graduationYear} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-slate-950 border border-slate-800 p-3 text-xs text-slate-100" placeholder="e.g. 2025" />
+                  <label className="block text-xs text-gray-500 mb-1">Graduation Year</label>
+                  <input type="text" name="graduationYear" value={edu.graduationYear} onChange={(e) => handleEduChange(idx, e)} required className="w-full rounded-xl bg-gray-50 border border-gray-200 p-3 text-xs text-gray-900 focus:bg-white focus:outline-none focus:border-indigo-500 transition-all" placeholder="e.g. 2025" />
                 </div>
               </div>
             ))}
@@ -233,7 +237,7 @@ export default function AddResumePage() {
             <button 
               type="submit" 
               disabled={loading}
-              className="px-6 py-3 font-mono font-bold text-sm text-slate-950 bg-emerald-500 hover:bg-emerald-400 active:scale-95 transition-all rounded-xl disabled:opacity-50"
+              className="px-6 py-3 font-semibold text-sm text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 active:scale-95 transition-all rounded-xl disabled:opacity-50 shadow-md shadow-indigo-500/25"
             >
               {loading ? 'SYNCING DATA ARTIFACTS...' : 'COMPILE & SAVE TO FORGE'}
             </button>

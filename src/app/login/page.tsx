@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { authClient } from '@/lib/auth-client';
 
 export default function LoginPage() {
-    const router = useRouter()
+    const router = useRouter();
     // 1. Core State Tracking
     const [formData, setFormData] = useState({
         email: '',
@@ -30,57 +30,49 @@ export default function LoginPage() {
     };
 
     // 4. Submission Console Output
-    const handleSubmit = async(e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-
         const { data, error } = await authClient.signIn.email({
-            // name: formData.name, // required
             email: formData.email, // required
             password: formData.password, // required
-            // image: "https://example.com/image.png",
             callbackURL: "/",
         });
-        router.push('/')
+        router.push('/');
 
-        console.log(data, error)
-
-        // console.log('--- Login Form Submission Data ---');
-        // console.log('Email Address:', formData.email);
-        // console.log('Password Hash (Raw String):', formData.password);
-        // console.log('----------------------------------');
+        console.log(data, error);
     };
 
     return (
-        <div className="min-h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-slate-950">
+        <div className="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-[#F8F7FF]">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3 }}
-                className="w-full max-w-md space-y-8 p-8 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl"
+                className="w-full max-w-md space-y-8 p-8 rounded-2xl bg-white border border-gray-100 shadow-xl shadow-indigo-100/40"
             >
                 <div>
-                    <h2 className="text-center text-3xl font-extrabold tracking-tight text-slate-100">
+                    <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900" style={{ fontFamily: "'Outfit', sans-serif" }}>
                         Sign in to your account
                     </h2>
-                    <p className="mt-2 text-center text-sm text-slate-400">
+                    <p className="mt-2 text-center text-sm text-gray-500">
                         Or{' '}
-                        <Link href="/register" className="font-medium text-emerald-400 hover:text-emerald-300 transition-colors">
+                        <Link href="/register" className="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
                             create a new workspace profile
                         </Link>
                     </p>
                 </div>
 
                 {/* Demo Helper Action */}
-                <div className="p-3.5 bg-emerald-950/40 border border-emerald-800/60 rounded-lg flex items-center justify-between">
-                    <div className="text-xs text-slate-300">
-                        <span className="font-bold text-emerald-400 block mb-0.5">Presentation Mode</span>
+                <div className="p-4 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-between">
+                    <div className="text-xs text-gray-600">
+                        <span className="font-bold text-indigo-700 block mb-0.5">Presentation Mode</span>
                         Quickly load sample profile credentials.
                     </div>
                     <button
                         type="button"
                         onClick={handleDemoFill}
-                        className="text-xs font-semibold px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded transition-colors"
+                        className="text-xs font-semibold px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors shadow-sm"
                     >
                         Auto-Fill
                     </button>
@@ -89,7 +81,7 @@ export default function LoginPage() {
                 <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-4 rounded-md">
                         <div>
-                            <label htmlFor="email" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                            <label htmlFor="email" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
                                 Email address
                             </label>
                             <input
@@ -99,13 +91,13 @@ export default function LoginPage() {
                                 required
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full px-3 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm transition-colors"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:bg-white text-sm transition-all"
                                 placeholder="alex@example.com"
                             />
                         </div>
 
                         <div>
-                            <label htmlFor="password" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                            <label htmlFor="password" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
                                 Password
                             </label>
                             <input
@@ -115,7 +107,7 @@ export default function LoginPage() {
                                 required
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full px-3 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm transition-colors"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:bg-white text-sm transition-all"
                                 placeholder="••••••••"
                             />
                         </div>
@@ -124,7 +116,7 @@ export default function LoginPage() {
                     <div>
                         <button
                             type="submit"
-                            className="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-lg transition-colors duration-150 shadow-md shadow-emerald-900/20"
+                            className="w-full py-3.5 px-4 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-indigo-500/25 hover:shadow-indigo-500/35"
                         >
                             Sign In & Log Data
                         </button>

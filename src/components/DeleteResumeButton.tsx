@@ -38,19 +38,19 @@ export default function DeleteResumeButton({ resumeId, resumeTitle }: DeleteResu
 
   if (confirming) {
     return (
-      <div className="flex items-center gap-2 text-xs">
-        <span className="text-slate-400">Delete "{resumeTitle}"?</span>
+      <div className="flex items-center gap-2 text-xs bg-red-50 border border-red-100 rounded-lg p-2 animate-reveal">
+        <span className="text-red-700 font-medium">Delete "{resumeTitle}"?</span>
         <button
           onClick={handleDelete}
           disabled={isPending}
-          className="px-2 py-1 rounded-md bg-red-500/90 text-white hover:bg-red-500 disabled:opacity-50"
+          className="px-2.5 py-1 rounded bg-red-600 text-white hover:bg-red-700 font-bold transition-all disabled:opacity-50 text-[10px]"
         >
           {isPending ? 'Deleting…' : 'Confirm'}
         </button>
         <button
           onClick={() => setConfirming(false)}
           disabled={isPending}
-          className="px-2 py-1 rounded-md border border-slate-700 text-slate-300 hover:border-slate-500"
+          className="px-2.5 py-1 rounded border border-gray-200 bg-white text-gray-500 hover:bg-gray-50 transition-all text-[10px]"
         >
           Cancel
         </button>
@@ -62,11 +62,11 @@ export default function DeleteResumeButton({ resumeId, resumeTitle }: DeleteResu
     <div className="flex flex-col items-end gap-1">
       <button
         onClick={() => setConfirming(true)}
-        className="text-xs text-red-400/80 hover:text-red-400 underline underline-offset-2"
+        className="text-xs text-red-500 hover:text-red-700 font-semibold underline underline-offset-2 transition-colors cursor-pointer"
       >
         Delete
       </button>
-      {error && <span className="text-xs text-red-500">{error}</span>}
+      {error && <span className="text-xs text-red-500 font-medium">{error}</span>}
     </div>
   );
 }

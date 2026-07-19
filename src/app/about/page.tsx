@@ -1,8 +1,26 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
-// Change this to a default export so Next.js can resolve the route page properly
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const pillarVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
 const AboutPage = () => {
   const pillars = [
     {
@@ -23,50 +41,68 @@ const AboutPage = () => {
   ];
 
   return (
-    <section className="py-20 bg-slate-950">
+    <section className="py-20 bg-[#F8F7FF] min-h-screen">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-500 mb-3">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600 mb-3">
             Project Overview
           </h2>
-          <h3 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
-            Engineering the Future of <span className="text-emerald-500">Career Artifacts</span>
+          <h3 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            Engineering the Future of <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Career Artifacts</span>
           </h3>
-          <p className="mt-4 text-sm text-slate-400 leading-relaxed">
+          <p className="mt-4 text-sm text-gray-500 leading-relaxed">
             ResumeForge AI is an advanced, full-stack conceptual workspace designed to transition professional portfolios out of legacy rich-text documents and into high-performance, machine-readable datasets.
           </p>
-        </div>
+        </motion.div>
 
         {/* Dynamic Architectural Grid */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 mb-16">
+        <motion.div 
+          className="grid grid-cols-1 gap-8 lg:grid-cols-3 mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {pillars.map((pillar, i) => (
-            <div 
+            <motion.div 
               key={i} 
-              className="relative rounded-xl border border-slate-900 bg-slate-900/10 p-8 hover:border-slate-800 transition-colors"
+              variants={pillarVariants}
+              className="relative rounded-2xl border border-gray-100 bg-white p-8 hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-100/30 transition-all duration-300"
             >
-              <div className="text-xs font-mono font-semibold text-emerald-500/80 uppercase tracking-wider mb-1">
+              <div className="text-xs font-mono font-semibold text-indigo-600/80 uppercase tracking-wider mb-1">
                 {pillar.subtitle}
               </div>
-              <h4 className="text-xl font-bold text-slate-200 mb-4">
+              <h4 className="text-xl font-bold text-gray-900 mb-4">
                 {pillar.title}
               </h4>
-              <p className="text-sm text-slate-400 leading-relaxed">
+              <p className="text-sm text-gray-500 leading-relaxed">
                 {pillar.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Tech Stack Blueprint Callout */}
-        <div className="rounded-xl border border-slate-900 bg-slate-900/20 p-8 backdrop-blur-sm">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm"
+        >
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <h4 className="text-lg font-semibold text-slate-200">
+              <h4 className="text-lg font-semibold text-gray-900">
                 System Blueprint Stack
               </h4>
-              <p className="text-xs text-slate-400 mt-1 max-w-xl">
+              <p className="text-xs text-gray-500 mt-1 max-w-xl">
                 Engineered with end-to-end TypeScript using Next.js (App Router) on the presentation layer, backed by an Express/MongoDB REST core, and secured via Better Auth ecosystem structures.
               </p>
             </div>
@@ -75,14 +111,14 @@ const AboutPage = () => {
               {['Next.js', 'Express.js', 'MongoDB', 'Groq API', 'Tailwind CSS'].map((tech) => (
                 <span 
                   key={tech} 
-                  className="rounded-md border border-slate-800 bg-slate-950 px-3 py-1 text-xs font-mono text-slate-300"
+                  className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-mono text-gray-600 hover:border-indigo-200 hover:text-indigo-600 transition-all"
                 >
                   {tech}
                 </span>
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

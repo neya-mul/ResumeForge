@@ -4,7 +4,7 @@ import { Hero } from "@/Layers/Hero";
 import TechMarquee from "@/Layers/MarqueeCom";
 import { StatsSection } from "@/Layers/StatsSection";
 import { StepsSection } from "@/Layers/StepsSection";
-import Image from "next/image";
+import { CTASection } from "@/Layers/CTASection";
 
 export default function Home() {
   return (
@@ -14,8 +14,8 @@ export default function Home() {
       <FeaturesSection></FeaturesSection>
       <StepsSection></StepsSection>
       <StatsSection></StatsSection>
+      <CTASection></CTASection>
       <Footer></Footer>
-      
     </div>
   );
 }

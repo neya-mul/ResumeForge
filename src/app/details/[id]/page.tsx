@@ -43,8 +43,10 @@ export default async function Details({
 
   if (!res.ok) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0A0F1C]">
-        <p className="text-lg text-slate-400">This resume couldn't be found.</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#F8F7FF]">
+        <div className="p-8 rounded-2xl bg-white border border-gray-150 shadow-sm text-center max-w-sm">
+          <p className="text-lg text-gray-500">This resume couldn't be found.</p>
+        </div>
       </div>
     );
   }
@@ -53,7 +55,7 @@ export default async function Details({
   const resume: Resume = data.resume;
 
   return (
-    <div className="min-h-screen py-16 px-6 bg-[#0A0F1C]">
+    <div className="min-h-screen py-16 px-6 bg-[#F8F7FF] text-gray-900">
       <style>{`
         @keyframes rf-fade-up {
           from { opacity: 0; transform: translateY(14px); }
@@ -79,34 +81,54 @@ export default async function Details({
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="rf-reveal mb-8">
-          <p className="text-xs tracking-[0.2em] uppercase mb-2 text-emerald-400 font-mono">
+          <p className="text-xs tracking-[0.2em] uppercase mb-2 text-indigo-600 font-mono font-bold">
             Candidate Profile
           </p>
-          <h1 className="text-4xl font-bold mb-1 text-white">{resume.fullName}</h1>
-          <p className="text-lg font-medium text-emerald-400">{resume.title}</p>
+          <h1 className="text-4xl font-bold mb-1 text-gray-900" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            {resume.fullName}
+          </h1>
+          <p className="text-lg font-semibold text-indigo-600">{resume.title}</p>
         </div>
 
         {/* Document grid */}
         <div
-          className="rf-reveal grid grid-cols-1 md:grid-cols-[280px_1fr] rounded-lg overflow-hidden mb-8 border border-white/10"
-          style={{ animationDelay: "80ms", background: "#0F172A" }}
+          className="rf-reveal grid grid-cols-1 md:grid-cols-[280px_1fr] rounded-2xl overflow-hidden mb-8 border border-gray-200/80 shadow-md"
+          style={{ animationDelay: "80ms", background: "#FFFFFF" }}
         >
           {/* Sidebar */}
-          <div className="p-8 space-y-8 bg-white/[0.02] border-b md:border-b-0 md:border-r border-white/10">
+          <div className="p-8 space-y-8 bg-gray-50/50 border-b md:border-b-0 md:border-r border-gray-250/60">
             <div>
               <SectionLabel>Contact</SectionLabel>
-              <div className="space-y-1.5 text-sm text-slate-300">
-                <p>{resume.location}</p>
-                <p className="break-words">{resume.email}</p>
-                <p>{resume.phoneNumber}</p>
+              <div className="space-y-2 text-sm text-gray-600">
+                <p className="flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  </svg>
+                  {resume.location}
+                </p>
+                <p className="break-all flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  {resume.email}
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  {resume.phoneNumber}
+                </p>
                 {resume.website && (
-                  
-                 <a   href={resume.website}
+                  <a
+                    href={resume.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block underline underline-offset-2 text-slate-300 hover:text-emerald-400 transition-colors"
+                    className="flex items-center gap-1.5 underline underline-offset-2 text-indigo-600 hover:text-indigo-850 transition-colors"
                   >
-                    {resume.website}
+                    <svg className="w-4 h-4 text-indigo-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                    <span className="truncate">{resume.website}</span>
                   </a>
                 )}
               </div>
@@ -119,7 +141,7 @@ export default async function Details({
                   {resume.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 text-xs rounded-md font-mono text-emerald-300 bg-emerald-400/10 border border-emerald-400/20 transition-transform hover:-translate-y-0.5"
+                      className="px-3 py-1 text-xs rounded-lg font-mono text-indigo-700 bg-indigo-50 border border-indigo-100 transition-transform hover:-translate-y-0.5"
                     >
                       {skill}
                     </span>
@@ -135,9 +157,9 @@ export default async function Details({
                   {resume.education.map((edu, i) => (
                     <div key={i}>
                       {edu.degree && (
-                        <p className="text-sm font-semibold text-white">{edu.degree}</p>
+                        <p className="text-sm font-bold text-gray-900">{edu.degree}</p>
                       )}
-                      <p className="text-xs text-slate-400">
+                      <p className="text-xs text-gray-500 mt-0.5">
                         {edu.institution}
                         {edu.duration ? ` \u00b7 ${edu.duration}` : ""}
                       </p>
@@ -153,18 +175,19 @@ export default async function Details({
             {resume.summary && (
               <div>
                 <SectionLabel>Summary</SectionLabel>
-                <p className="leading-relaxed text-slate-200">{resume.summary}</p>
+                <p className="leading-relaxed text-gray-700 text-sm whitespace-pre-line">{resume.summary}</p>
               </div>
             )}
 
             {resume.experience?.length > 0 && (
               <div>
                 <SectionLabel>Experience</SectionLabel>
-                <div className="space-y-5">
+                <div className="space-y-6">
                   {resume.experience.map((exp, i) => (
-                    <div key={i} className="pl-4 border-l-2 border-white/10">
-                      <p className="font-semibold text-white">{exp.role}</p>
-                      <p className="text-sm text-slate-400">
+                    <div key={i} className="pl-5 border-l-2 border-indigo-100 relative">
+                      <div className="absolute w-2 h-2 rounded-full bg-indigo-650 -left-[5px] top-1.5" />
+                      <p className="font-bold text-gray-900 text-sm">{exp.role}</p>
+                      <p className="text-xs text-gray-500 font-medium mt-0.5">
                         {exp.company} &middot; {exp.duration}
                       </p>
                     </div>
@@ -187,7 +210,7 @@ export default async function Details({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs tracking-[0.15em] uppercase mb-3 text-slate-400 font-mono">
+    <p className="text-xs tracking-[0.15em] uppercase mb-3 text-indigo-800 font-mono font-bold">
       {children}
     </p>
   );

@@ -36,15 +36,15 @@ export default function AiSuggestions({ resumeId }: { resumeId: string }) {
 
   return (
     <div
-      className="rounded-lg px-6 py-6 border border-white/10 border-t-2"
-      style={{ background: "#0F172A", borderTopColor: "#34D399", borderTopStyle: "dashed" }}
+      className="rounded-2xl px-6 py-6 border border-gray-200/80 shadow-sm border-t-4 bg-white"
+      style={{ borderTopColor: "#4F46E5" }}
     >
       <div className="flex items-center gap-2 mb-4">
         <span
-          className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"
+          className="inline-block w-1.5 h-1.5 rounded-full bg-indigo-600"
           style={{ animation: loading ? "rf-pulse 1s ease-in-out infinite" : "none" }}
         />
-        <p className="text-xs tracking-[0.15em] uppercase text-emerald-400 font-mono">
+        <p className="text-xs font-bold tracking-[0.15em] uppercase text-indigo-750 font-mono">
           AI Resume Review
         </p>
       </div>
@@ -52,25 +52,25 @@ export default function AiSuggestions({ resumeId }: { resumeId: string }) {
       <button
         onClick={handleGetSuggestions}
         disabled={loading}
-        className="px-4 py-2 text-sm font-medium rounded-md transition-colors disabled:opacity-50 bg-white text-[#0A0F1C] hover:bg-emerald-400"
+        className="px-4 py-2.5 text-xs font-bold rounded-xl transition-all disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-750 shadow-sm"
       >
         {loading ? "Reading resume…" : hasRun ? "Re-run review" : "Get AI suggestions"}
       </button>
 
-      {error && <p className="text-sm mt-3 text-red-400">{error}</p>}
+      {error && <p className="text-sm mt-3 text-red-500 font-medium">{error}</p>}
 
       {suggestions.length > 0 && (
         <ul className="mt-5 space-y-3">
           {suggestions.map((s, i) => (
             <li
               key={i}
-              className="flex gap-3 px-4 py-3 rounded-md text-sm text-slate-200 bg-emerald-400/5 border border-emerald-400/15"
+              className="flex gap-3 px-4 py-3 rounded-xl text-sm text-gray-700 bg-indigo-50/50 border border-indigo-100/50"
               style={{ animation: "rf-message-in 0.35s ease both", animationDelay: `${i * 60}ms` }}
             >
-              <span className="shrink-0 text-emerald-400 font-mono">
+              <span className="shrink-0 text-indigo-600 font-mono font-bold">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span>{s}</span>
+              <span className="leading-relaxed">{s}</span>
             </li>
           ))}
         </ul>
