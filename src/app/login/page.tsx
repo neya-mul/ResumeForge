@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { authClient } from '@/lib/auth-client';
+import toast from 'react-hot-toast';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -34,13 +35,17 @@ export default function LoginPage() {
         e.preventDefault();
 
         const { data, error } = await authClient.signIn.email({
-            email: formData.email, // required
-            password: formData.password, // required
+            email: formData.email,
+            password: formData.password,
             callbackURL: "/",
         });
-        router.push('/');
 
-        console.log(data, error);
+        if (error) {
+            toast.error(error.message || 'Login failed. Please try again.');
+            return;
+        }
+
+        router.push('/');
     };
 
     return (
