@@ -8,21 +8,20 @@ export const Footer: React.FC = () => {
 
   const companyLinks = [
     { name: 'About Us', path: '/about' },
-    { name: 'Contact Support', path: '/support' },
-    { name: 'Help Center', path: '/help' },
+    { name: 'Add Resume', path: '/add-resume' },
+    { name: 'Browse Resumes', path: '/brouse-resumes' },
   ];
 
-  const resourceLinks = [
-    { name: 'Privacy Policy', path: '/privacy' },
-    { name: 'Terms of Service', path: '/terms' },
-    { name: 'Browse Resumes', path: '/brouse-resumes' },
+  const socialLinks = [
+    { name: 'GitHub', href: 'https://github.com/neya-mul' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/neya-mul/' },
   ];
 
   return (
     <footer className="w-full bg-white dark:bg-zinc-900 border-t border-gray-100 dark:border-zinc-800 text-gray-500 dark:text-zinc-400">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          
+
           {/* Brand Column */}
           <div className="md:col-span-2 flex flex-col space-y-4">
             <Link href="/" className="flex items-center space-x-2">
@@ -38,15 +37,20 @@ export const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Platform Links */}
+          {/* Social Links */}
           <div>
-            <h4 className="text-sm font-semibold text-gray-800 dark:text-zinc-200 uppercase tracking-wider mb-4">Resources</h4>
+            <h4 className="text-sm font-semibold text-gray-800 dark:text-zinc-200 uppercase tracking-wider mb-4">Connect</h4>
             <ul className="space-y-2.5">
-              {resourceLinks.map((link) => (
-                <li key={link.path}>
-                  <Link href={link.path} className="text-sm hover:text-indigo-600 transition-colors duration-150">
+              {socialLinks.map((link) => (
+                <li key={link.href}>
+                  
+                  <a  href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm hover:text-indigo-600 transition-colors duration-150"
+                  >
                     {link.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -65,7 +69,7 @@ export const Footer: React.FC = () => {
               ))}
             </ul>
             <div className="pt-2 border-t border-gray-100 dark:border-zinc-800 text-xs space-y-1 text-gray-400 dark:text-zinc-500">
-              <p>Email: support@resumeforge.ai</p>
+              <p>Email: neyamulislam946@gmail.com</p>
             </div>
           </div>
 
@@ -75,12 +79,12 @@ export const Footer: React.FC = () => {
         <div className="mt-12 pt-6 border-t border-gray-100 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400 dark:text-zinc-500">
           <p>&copy; {currentYear} ResumeForge. All rights reserved.</p>
           <div className="flex space-x-6">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-indigo-600 transition-colors">GitHub</a>
-            <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-indigo-600 transition-colors">X (Twitter)</a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-indigo-600 transition-colors">LinkedIn</a>
+            <a href="https://github.com/neya-mul" target="_blank" rel="noreferrer" className="hover:text-indigo-600 transition-colors">GitHub</a>
+            {/* <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-indigo-600 transition-colors">X (Twitter)</a> */}
+            <a href="https://www.linkedin.com/in/neya-mul/" target="_blank" rel="noreferrer" className="hover:text-indigo-600 transition-colors">LinkedIn</a>
           </div>
         </div>
       </div>
     </footer>
   );
-};
+}
