@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { authClient } from '@/lib/auth-client';
 import toast from 'react-hot-toast';
+import { Eye, EyeOff } from 'lucide-react';
+import { FcGoogle } from 'react-icons/fc';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -14,6 +16,7 @@ export default function LoginPage() {
         email: '',
         password: '',
     });
+    const [showPassword, setShowPassword] = useState(false);
 
     // 2. Generic Input Handler
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +48,20 @@ export default function LoginPage() {
             return;
         }
 
+        toast.success('Signed in successfully!');
         router.push('/');
+    };
+
+    // 5. Google OAuth Handler
+    const handleGoogleSignIn = async () => {
+        const { error } = await authClient.signIn.social({
+            provider: 'google',
+            callbackURL: "/",
+        });
+
+        if (error) {
+            toast.error(error.message || 'Google sign-in failed. Please try again.');
+        }
     };
 
     return (
@@ -83,7 +99,23 @@ export default function LoginPage() {
                     </button>
                 </div> */}
 
-                <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
+                {/* Google Sign-In */}
+                <button
+                    type="button"
+                    onClick={handleGoogleSignIn}
+                    className="w-full flex items-center justify-center gap-3 py-3 px-4 bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-xl text-sm font-semibold text-gray-700 dark:text-zinc-200 hover:bg-gray-50 dark:hover:bg-zinc-700 transition-colors shadow-sm"
+                >
+                    <FcGoogle className="w-5 h-5" />
+                    Continue with Google
+                </button>
+
+                <div className="flex items-center gap-3">
+                    <div className="h-px flex-1 bg-gray-200 dark:bg-zinc-700" />
+                    <span className="text-xs text-gray-400 dark:text-zinc-500 uppercase tracking-wider">or</span>
+                    <div className="h-px flex-1 bg-gray-200 dark:bg-zinc-700" />
+                </div>
+
+                <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-4 rounded-md">
                         <div>
                             <label htmlFor="email" className="block text-xs font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">
@@ -105,16 +137,27 @@ export default function LoginPage() {
                             <label htmlFor="password" className="block text-xs font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">
                                 Password
                             </label>
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                required
-                                value={formData.password}
-                                onChange={handleChange}
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-sm transition-all"
-                                placeholder="••••••••"
-                            />
+                            <div className="relative">
+                                <input
+                                    id="password"
+                                    name="password"
+                                    type={showPassword ? 'text' : 'password'}
+                                    required
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 pr-11 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-700 text-sm transition-all"
+                                    placeholder="••••••••"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword((prev) => !prev)}
+                                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 dark:text-zinc-500 dark:hover:text-zinc-300 transition-colors"
+                                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                                    tabIndex={-1}
+                                >
+                                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                </button>
+                            </div>
                         </div>
                     </div>
 

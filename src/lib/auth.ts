@@ -9,6 +9,16 @@ await client.connect();
 const db = client.db("ResumeForge");
 
 export const auth = betterAuth({
+  socialProviders: {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      // some better-auth versions expose this as authorizationUrlParams / authorizationParams
+      authorizationUrlParams: {
+        prompt: "select_account",
+      },
+    },
+  },
   emailAndPassword: {
     enabled: true,
   },
