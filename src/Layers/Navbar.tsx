@@ -161,7 +161,10 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Hamburger Menu Toggle Button */}
-          <div className="flex md:hidden items-center gap-3">
+          <div className="flex md:hidden items-center  gap-3">
+            {/* Theme toggle shown next to the hamburger on mobile */}
+            <ThemeToggle />
+
             {/* Compact avatar shown next to the hamburger on mobile when logged in */}
             {!isPending && isLoggedIn && user && (
               user.image ? (
